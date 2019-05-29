@@ -21,22 +21,22 @@ and does the following:
 
 import sys
 import calendar
-from datetime import datetime
+import datetime
 
-def calendario(month=None, year=None, **args):
+def calendario(month=None, year=None, *args):
     '''Returns a calendar for the current month if no arguments passed;
         If one argument passed, returns a calendar for that argument;
         If two arguments passed, returns a calendar for the month and year.
         '''
-    if args.items():
-        return '''Returns a calendar for the current month if no arguments passed;
+    if len(args):
+        return print('''Returns a calendar for the current month if no arguments passed;
         If one argument passed, returns a calendar for that argument;
         If two arguments passed, returns a calendar for the month and year.
-        '''
+        ''')
     if month and year:
-        return calendar.TextCalendar.prmonth(year, month)
+        return calendar.prmonth(year, month)
     if month:
-        return calendar.TextCalendar.prmonth(datetime.date.today().year, month)
-    return calendar.TextCalendar.prmonth(datetime.date.today().year, datetime.date.today().month)
+        return calendar.prmonth(datetime.date.today().year, month)
+    return calendar.prmonth(datetime.date.today().year, datetime.date.today().month)
 
-calendario();
+##calendario(6, 2018);
